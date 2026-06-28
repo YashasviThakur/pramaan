@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import WordsPullUp from './WordsPullUp';
@@ -15,12 +16,22 @@ const NAV = [
 
 export default function Hero() {
   const { enter } = useStore();
+  const [videoReady, setVideoReady] = useState(false);
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section className="l-hero">
       <div className="l-hero-inner">
-        <video className="l-hero-video" autoPlay loop muted playsInline src={HERO_VIDEO} />
+        <video
+          className={`l-hero-video${videoReady ? ' is-ready' : ''}`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          src={HERO_VIDEO}
+          onCanPlay={() => setVideoReady(true)}
+        />
         <div className="l-noise noise-overlay" />
         <div className="l-hero-grad" />
 
@@ -33,7 +44,16 @@ export default function Hero() {
 
         <div className="l-hero-content">
           <div className="l-hero-head">
-            <WordsPullUp text="Pramaan" className="l-title" showAsterisk />
+            <motion.div
+              className="l-hero-kicker"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.8, ease: EASE }}
+            >
+              <span className="l-hero-roman">Pramaan</span>
+              <span className="l-hero-mean">/ proof · evidence</span>
+            </motion.div>
+            <WordsPullUp text="प्रमाण" className="l-title l-title-deva" showAsterisk />
           </div>
           <div className="l-hero-right">
             <motion.p

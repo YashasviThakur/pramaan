@@ -2,7 +2,8 @@
    PRAMAAN — cinematic landing page
    ============================================================ */
 
-.landing { background:#000; color:#E1E0CC; width:100%; overflow-x:hidden; position:relative; }
+.landing { background:linear-gradient(180deg,#11151b 0%,#0a0d12 55%,#000 100%);
+  color:#E1E0CC; width:100%; overflow-x:hidden; position:relative; }
 
 /* page-wide cinematic background — same clip behind every section */
 .l-bg-video { position:fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
@@ -23,9 +24,13 @@
 /* ---------------- HERO ---------------- */
 .l-hero { height:100vh; min-height:560px; padding:16px; }
 @media (min-width:768px){ .l-hero{ padding:24px; } }
-.l-hero-inner { position:relative; width:100%; height:100%; border-radius:16px; overflow:hidden; background:#000; }
+.l-hero-inner { position:relative; width:100%; height:100%; border-radius:16px; overflow:hidden;
+  /* tone-matched gradient paints instantly so there's no black flash while the video streams */
+  background:linear-gradient(165deg,#33414c 0%,#5b5f53 40%,#6f5f3f 72%,#2a2316 100%); }
 @media (min-width:768px){ .l-hero-inner{ border-radius:32px; } }
-.l-hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.l-hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:0; transition:opacity 1s ease; }
+.l-hero-video.is-ready { opacity:1; }
 .l-noise { position:absolute; inset:0; opacity:.7; mix-blend-mode:overlay; pointer-events:none; }
 .l-hero-grad { position:absolute; inset:0; pointer-events:none;
   background:linear-gradient(to bottom, rgba(0,0,0,.30), transparent 45%, rgba(0,0,0,.60)); }
@@ -49,8 +54,20 @@
 .l-hero-right { grid-column:span 12; display:flex; flex-direction:column; gap:20px; }
 @media (min-width:1024px){ .l-hero-right{ grid-column:span 4; padding-bottom:14px; } }
 
+/* bilingual masthead — English eyebrow + Devanagari wordmark, landing page only */
+.l-hero-kicker { display:flex; align-items:baseline; gap:14px; margin-bottom:2px; flex-wrap:wrap;
+  padding-left:.04em; }
+.l-hero-roman { font-family:'Almarai',sans-serif; font-weight:700; color:#E1E0CC;
+  font-size:clamp(20px,3.4vw,34px); line-height:1; letter-spacing:-.01em; }
+.l-hero-mean { font-size:11px; text-transform:uppercase; letter-spacing:.22em; font-weight:500;
+  color:rgba(222,219,200,.5); transform:translateY(-.1em); white-space:nowrap; }
+@media (min-width:768px){ .l-hero-mean{ font-size:13px; } }
+
 .l-title { font-weight:700; line-height:.85; letter-spacing:-.07em; color:#E1E0CC;
   font-size:23vw; display:inline-flex; flex-wrap:wrap; }
+/* Devanagari wordmark — no negative tracking, extra leading so matras/conjuncts don't clip */
+.l-title-deva { font-family:'Mukta','Nirmala UI','Noto Sans Devanagari',sans-serif;
+  font-weight:800; letter-spacing:normal; line-height:1.04; }
 @media (min-width:640px){ .l-title{ font-size:21vw; } }
 @media (min-width:768px){ .l-title{ font-size:18vw; } }
 @media (min-width:1024px){ .l-title{ font-size:14vw; } }

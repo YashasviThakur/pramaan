@@ -34,7 +34,7 @@ function Foot() {
 export default function Landing() {
   return (
     <div className="landing">
-      <video className="l-bg-video" autoPlay loop muted playsInline src={BG_VIDEO} />
+      <video className="l-bg-video" autoPlay loop muted playsInline preload="auto" src={BG_VIDEO} />
       <div className="l-bg-scrim" />
       <Hero />
       <About />
