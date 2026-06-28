@@ -106,7 +106,7 @@ export default function SecurityShield() {
           <div className="card card-pad">
             <div className="sec-title" style={{ marginBottom: 10 }}><span className="ico"><FileWarning size={17} color="var(--chakra)" /></span> CERT-In Threat Intelligence (RAG)</div>
             {!attacking ? (
-              <div className="muted" style={{ fontSize: 12.5 }}>Connected to live national advisories. When an event fires, the AI matches the log pattern to the corpus and explains it in plain language.</div>
+              <div className="muted" style={{ fontSize: 12.5 }}>Indexed against the national CERT-In advisory corpus. When an event fires, the AI matches the log pattern to the corpus and explains it in plain language.</div>
             ) : (
               <div className="grid" style={{ gap: 8 }}>
                 {ADVISORIES.map((ad) => (

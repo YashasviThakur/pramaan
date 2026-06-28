@@ -47,11 +47,11 @@ h1,h2,h3,h4 { font-family:var(--font-head); font-weight:800; letter-spacing:-.02
 .mono { font-family:var(--font-mono) !important; }
 a { color:inherit; text-decoration:none; }
 button { font-family:inherit; }
-::selection { background:rgba(255,154,60,.35); }
+::selection { background:rgba(222,219,200,.28); color:#0a0a08; }
 
 *::-webkit-scrollbar { width:9px; height:9px; }
-*::-webkit-scrollbar-thumb { background:#243056; border-radius:8px; }
-*::-webkit-scrollbar-thumb:hover { background:#2e3c66; }
+*::-webkit-scrollbar-thumb { background:rgba(222,219,200,.16); border-radius:8px; }
+*::-webkit-scrollbar-thumb:hover { background:rgba(222,219,200,.30); }
 *::-webkit-scrollbar-track { background:transparent; }
 
 /* ---------------- atoms ---------------- */
@@ -74,7 +74,7 @@ button { font-family:inherit; }
 .chip.ok    { color:var(--verified); border-color:rgba(47,210,154,.35); background:rgba(47,210,154,.08); }
 .chip.warn  { color:var(--warn);     border-color:rgba(255,195,77,.35); background:rgba(255,195,77,.08); }
 .chip.alert { color:var(--alert);    border-color:rgba(255,77,109,.40); background:rgba(255,77,109,.09); }
-.chip.info  { color:var(--chakra);   border-color:rgba(91,141,239,.35); background:rgba(91,141,239,.09); }
+.chip.info  { color:var(--chakra);   border-color:rgba(167,176,198,.35); background:rgba(167,176,198,.10); }
 
 .dot { width:7px; height:7px; border-radius:50%; display:inline-block; flex:none; }
 .dot.ok { background:var(--verified); box-shadow:0 0 8px var(--verified); }
@@ -87,7 +87,8 @@ button { font-family:inherit; }
   padding:9px 15px; border-radius:10px; cursor:pointer;
   border:1px solid var(--line); background:var(--ink-700); color:var(--text); transition:all .15s ease;
 }
-.btn:hover { border-color:#33406c; background:var(--ink-650); }
+.btn:hover { border-color:rgba(222,219,200,.30); background:var(--ink-650); }
+.btn:focus-visible { outline:2px solid var(--saffron); outline-offset:2px; }
 .btn:disabled { opacity:.4; cursor:not-allowed; }
 .btn.sm { padding:6px 11px; font-size:12px; border-radius:8px; }
 .btn.primary { border:none; color:#0a0a08; font-weight:700; background:var(--primary); box-shadow:0 8px 22px -12px rgba(222,219,200,.5); }
@@ -141,7 +142,9 @@ button { font-family:inherit; }
 .nav-item .nv-ico { width:18px; height:18px; flex:none; opacity:.9; }
 .nav-badge { margin-left:auto; font-size:10px; font-weight:700; padding:1px 7px; border-radius:999px; background:rgba(255,77,109,.16); color:var(--alert); }
 
-.sidebar-foot { margin-top:auto; padding:10px; border-top:1px solid var(--line-soft); }
+.sidebar-foot { margin-top:auto; padding:14px 10px 6px; border-top:1px solid var(--line-soft); }
+.foot-secure { display:flex; align-items:center; justify-content:center; gap:7px; font-size:11.5px; font-weight:600; color:var(--text-dim); }
+.foot-secure svg { color:var(--verified); }
 
 /* ---------------- main / topbar ---------------- */
 .main { display:flex; flex-direction:column; min-width:0; height:100vh; }
@@ -166,7 +169,8 @@ button { font-family:inherit; }
 .sec-title .ico { color:var(--saffron); display:flex; }
 
 /* ---------------- stat cards ---------------- */
-.stat { padding:16px 18px; display:flex; flex-direction:column; gap:9px; position:relative; overflow:hidden; }
+.stat { padding:16px 18px; display:flex; flex-direction:column; gap:9px; position:relative; overflow:hidden; transition:border-color .18s ease, transform .18s ease; }
+.stat:hover { border-color:rgba(222,219,200,.22); transform:translateY(-2px); }
 .stat .st-top { display:flex; align-items:center; justify-content:space-between; }
 .stat .st-ico { width:34px; height:34px; border-radius:9px; display:grid; place-items:center; background:var(--ink-700); border:1px solid var(--line); }
 .stat .st-val { font-family:var(--font-head); font-weight:800; font-size:27px; line-height:1; letter-spacing:-.02em; }
@@ -266,7 +270,7 @@ button { font-family:inherit; }
 .kv .v { font-family:var(--font-mono); font-size:12px; }
 
 .demo-step { display:grid; grid-template-columns:auto 1fr auto; gap:13px; align-items:center; padding:13px; border:1px solid var(--line); border-radius:12px; transition:all .2s; }
-.demo-step:hover { border-color:#33406c; }
+.demo-step:hover { border-color:rgba(222,219,200,.24); }
 .demo-step .num { width:28px; height:28px; border-radius:9px; background:var(--ink-700); display:grid; place-items:center; font-weight:700; font-family:var(--font-head); border:1px solid var(--line); }
 .demo-step.done .num { background:var(--green-d); color:#04130d; border-color:var(--green); }
 

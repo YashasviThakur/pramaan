@@ -1,6 +1,6 @@
 import { useStore } from '../store';
 import { EXAM } from '../data/mock';
-import { Radio, RotateCcw, Clock } from 'lucide-react';
+import { RotateCcw, Clock } from 'lucide-react';
 
 const TITLES = {
   command: ['Command Center', 'National exam-integrity overview'],
@@ -23,9 +23,6 @@ export default function Topbar() {
       <div className="top-spacer" />
       <div className="statusline">
         <Clock size={14} /> {EXAM.name} · {EXAM.window}
-      </div>
-      <div className="statusline">
-        <span className="dot ok pulse" /> LIVE
       </div>
       <button className="btn sm ghost" onClick={actions.reset} title="Reset demo">
         <RotateCcw size={14} /> Reset

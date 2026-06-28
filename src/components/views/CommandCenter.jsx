@@ -3,7 +3,7 @@ import IndiaMap from '../IndiaMap';
 import { EXAM, HEADLINE_STATS } from '../../data/mock';
 import {
   ShieldCheck, Clock3, GraduationCap, ShieldX, ArrowRight,
-  LockKeyhole, ScanLine, ShieldAlert, ListTree, Activity,
+  LockKeyhole, ScanLine, ShieldAlert, ListTree, Activity, Landmark,
 } from 'lucide-react';
 
 const STAT_ICONS = { sealed: ShieldCheck, leakwin: Clock3, graded: GraduationCap, threats: ShieldX };
@@ -25,14 +25,14 @@ export default function CommandCenter() {
       {/* hero strip */}
       <div className="card card-pad between" style={{ background: 'linear-gradient(110deg,var(--ink-750),var(--ink-800) 60%)' }}>
         <div>
-          <div className="chip info" style={{ marginBottom: 10 }}><span className="dot info pulse" /> LIVE · {EXAM.body}</div>
+          <div className="chip" style={{ marginBottom: 10 }}><Landmark size={13} /> {EXAM.body}</div>
           <h1 style={{ fontSize: 24, marginBottom: 4 }}>{EXAM.name} — national integrity, secured end-to-end</h1>
           <div className="muted" style={{ fontSize: 13.5 }}>
             {EXAM.candidates.toLocaleString('en-IN')} candidates · {EXAM.centers.toLocaleString('en-IN')} centres · {EXAM.cities} cities · exam window {EXAM.window}
           </div>
         </div>
         <button className="btn primary" onClick={() => go('delivery')}>
-          Run live demo <ArrowRight size={15} />
+          Run demo <ArrowRight size={15} />
         </button>
       </div>
 
@@ -45,9 +45,11 @@ export default function CommandCenter() {
             <div className="card stat" key={s.key}>
               <div className="st-top">
                 <div className="st-ico"><Icon size={18} color={breached ? 'var(--alert)' : 'var(--saffron)'} /></div>
-                <span className={`chip ${breached ? 'alert' : 'ok'}`} style={{ fontSize: 10 }}>
-                  {breached ? 'active' : s.tone === 'ok' ? 'nominal' : ''}
-                </span>
+                {(breached || s.tone === 'ok') && (
+                  <span className={`chip ${breached ? 'alert' : 'ok'}`} style={{ fontSize: 10 }}>
+                    {breached ? 'active' : 'nominal'}
+                  </span>
+                )}
               </div>
               <div className="st-val" style={{ color: breached ? 'var(--alert)' : undefined }}>
                 {s.key === 'threats' && state.incident.active && state.incident.stage !== 'contained' ? '1' : s.value}
@@ -64,13 +66,13 @@ export default function CommandCenter() {
         <div className="card card-pad">
           <div className="between" style={{ marginBottom: 6 }}>
             <div className="sec-title"><span className="ico"><Activity size={17} /></span> National Centre Grid</div>
-            <span className="chip">{state.incident.active ? 'incident active' : 'real-time'}</span>
+            {state.incident.active && <span className="chip alert">incident active</span>}
           </div>
           <IndiaMap />
         </div>
 
         <div className="card card-pad">
-          <div className="sec-title" style={{ marginBottom: 10 }}><span className="ico"><Activity size={17} /></span> Live Integrity Feed</div>
+          <div className="sec-title" style={{ marginBottom: 10 }}><span className="ico"><Activity size={17} /></span> Integrity Feed</div>
           <div className="feed">
             {state.events.map((e) => {
               const Icon = TONE_ICON[e.tone] || Activity;
@@ -91,7 +93,7 @@ export default function CommandCenter() {
       {/* demo runner */}
       <div className="card card-pad">
         <div className="between" style={{ marginBottom: 12 }}>
-          <div className="sec-title"><span className="ico"><ListTree size={17} /></span> Live Demo Workflow — what the judges see</div>
+          <div className="sec-title"><span className="ico"><ListTree size={17} /></span> Demo Workflow — what the judges see</div>
           <span className="muted" style={{ fontSize: 12 }}>{state.demoStep}/4 complete</span>
         </div>
         <div className="grid g2">

@@ -54,8 +54,8 @@ export default function Sidebar() {
       ))}
 
       <div className="sidebar-foot">
-        <div className="chip ok" style={{ width: '100%', justifyContent: 'center' }}>
-          <span className="dot ok pulse" /> System nominal
+        <div className="foot-secure">
+          <ShieldCheck size={13} /> End-to-end secured
         </div>
         <div className="faint" style={{ fontSize: 10.5, textAlign: 'center', marginTop: 8 }}>
           NEET-UG 2026 · NTA · demo build
