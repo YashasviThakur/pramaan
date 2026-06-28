@@ -22,10 +22,10 @@ const NAV = [
 ];
 
 export default function Sidebar() {
-  const { state, go } = useStore();
+  const { state, go, home } = useStore();
   return (
     <aside className="sidebar">
-      <div className="brand">
+      <div className="brand" onClick={home} style={{ cursor: 'pointer' }} title="Back to home">
         <div className="brand-mark">
           <ShieldCheck size={19} color="#fff" />
         </div>

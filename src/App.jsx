@@ -2,6 +2,7 @@ import { StoreProvider, useStore } from './store';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import Copilot from './components/Copilot';
+import Landing from './components/landing/Landing';
 import CommandCenter from './components/views/CommandCenter';
 import SecureDelivery from './components/views/SecureDelivery';
 import Evaluation from './components/views/Evaluation';
@@ -20,6 +21,7 @@ const VIEWS = {
 
 function Shell() {
   const { state } = useStore();
+  if (!state.entered) return <Landing />;
   const View = VIEWS[state.view] || CommandCenter;
   const breaching = state.incident.active && state.incident.stage !== 'contained';
 

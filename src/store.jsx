@@ -10,6 +10,7 @@ let _id = 100;
 const nid = () => ++_id;
 
 const initial = {
+  entered: false,
   view: 'command',
   copilotOpen: false,
   copilotTyping: false,
@@ -31,6 +32,8 @@ const initial = {
 
 function reducer(s, a) {
   switch (a.type) {
+    case 'ENTER': return { ...s, entered: true, view: a.view || 'command' };
+    case 'HOME': return { ...s, entered: false };
     case 'VIEW': return { ...s, view: a.view };
     case 'COPILOT_OPEN': return { ...s, copilotOpen: a.open ?? !s.copilotOpen };
     case 'COPILOT_TYPING': return { ...s, copilotTyping: a.on };
@@ -45,7 +48,7 @@ function reducer(s, a) {
     case 'STEP_DONE': return { ...s, incident: { ...s.incident, steps: { ...s.incident.steps, [a.id]: true } } };
     case 'CONTAINED': return { ...s, incident: { ...s.incident, stage: 'contained' }, flagged: false };
     case 'DEMO_STEP': return { ...s, demoStep: Math.max(s.demoStep, a.n) };
-    case 'RESET': return { ...initial, copilotOpen: s.copilotOpen, view: s.view,
+    case 'RESET': return { ...initial, entered: s.entered, copilotOpen: s.copilotOpen, view: s.view,
       copilotMsgs: SCRIPTS.welcome.map((m) => ({ id: nid(), role: 'ai', ...m })),
       events: initial.events.map((e) => ({ ...e, id: nid() })),
       ledger: LEDGER_SEED.map((l) => ({ id: nid(), ...l })),
@@ -85,6 +88,8 @@ export function StoreProvider({ children }) {
   }, []);
 
   const go = useCallback((view) => dispatch({ type: 'VIEW', view }), []);
+  const enter = useCallback((view) => dispatch({ type: 'ENTER', view }), []);
+  const home = useCallback(() => dispatch({ type: 'HOME' }), []);
 
   // ---- Pillar 1: secure launch ----
   const releaseShare = useCallback((id) => {
@@ -141,7 +146,7 @@ export function StoreProvider({ children }) {
   const reset = useCallback(() => { timers.current.forEach(clearTimeout); timers.current = []; dispatch({ type: 'RESET' }); }, []);
 
   const value = {
-    state, dispatch, go,
+    state, dispatch, go, enter, home,
     copilot: { open: state.copilotOpen, toggle: (open) => dispatch({ type: 'COPILOT_OPEN', open }), ask, sayScript },
     actions: { releaseShare, unlockPaper, runGrading, approveScore, triggerAttack, runPlaybookStep, contain, reset },
   };
