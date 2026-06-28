@@ -8,11 +8,11 @@ const SHOWCASE_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJO
 
 const PILLARS = [
   { title: 'Secure Delivery.', num: '01', view: 'delivery',
-    items: ['Shamir 2-of-3 key custodians', 'AES-256 time-locked papers', 'Decryption only at T-15 minutes', 'Leak window: weeks → minutes'] },
+    items: ['No single person can unlock a paper', 'Papers stay sealed until exam time', 'Opens 15 minutes before the exam', 'Leak risk: weeks → minutes'] },
   { title: 'AI Evaluation.', num: '02', view: 'evaluation',
-    items: ['AI rubric analysis with explanations', 'Human-in-the-loop final approval', '~70% less grading time'] },
+    items: ['AI grades and explains every mark', 'A teacher approves every score', 'Up to 70% less grading time'] },
   { title: 'Tamper-Proof Trust.', num: '03', view: 'ledger',
-    items: ['SHA-256 Merkle audit ledger', 'Instant retroactive-tamper detection', 'One-click transparent disputes'] },
+    items: ['Every step is permanently recorded', 'Any tampering is caught instantly', 'Re-checks and disputes in one click'] },
 ];
 
 export default function Features() {
