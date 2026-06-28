@@ -23,7 +23,7 @@ export default function CommandCenter() {
   return (
     <div className="grid view-narrow" style={{ gap: 18 }}>
       {/* hero strip */}
-      <div className="card card-pad between" style={{ background: 'linear-gradient(110deg,var(--ink-750),var(--ink-800) 60%)' }}>
+      <div className="card card-pad between" style={{ background: 'linear-gradient(110deg, rgba(24,24,24,.60), rgba(8,8,8,.68) 60%)' }}>
         <div>
           <div className="chip" style={{ marginBottom: 10 }}><Landmark size={13} /> {EXAM.body}</div>
           <h1 style={{ fontSize: 24, marginBottom: 4 }}>{EXAM.name} — national integrity, secured end-to-end</h1>

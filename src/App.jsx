@@ -10,6 +10,9 @@ import StudentPortal from './components/views/StudentPortal';
 import SecurityShield from './components/views/SecurityShield';
 import AuditLedger from './components/views/AuditLedger';
 
+// same cinematic clip as the landing background, for a unified look
+const BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4';
+
 const VIEWS = {
   command: CommandCenter,
   delivery: SecureDelivery,
@@ -26,17 +29,29 @@ function Shell() {
   const breaching = state.incident.active && state.incident.stage !== 'contained';
 
   return (
-    <div className="app">
-      {breaching && <div className="flag-overlay" />}
-      <Sidebar />
-      <div className="main">
-        <Topbar />
-        <div className="view">
-          <View />
+    <>
+      <video
+        className="app-bg-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        src={BG_VIDEO}
+      />
+      <div className="app-bg-scrim" />
+      <div className="app">
+        {breaching && <div className="flag-overlay" />}
+        <Sidebar />
+        <div className="main">
+          <Topbar />
+          <div className="view">
+            <View />
+          </div>
         </div>
+        <Copilot />
       </div>
-      <Copilot />
-    </div>
+    </>
   );
 }
 
