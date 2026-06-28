@@ -117,8 +117,8 @@
 @media (min-width:768px){ .l-about-body{ font-size:16px; margin-top:44px; } }
 
 /* ---------------- FEATURES ---------------- */
-.l-features { position:relative; min-height:100vh; background:transparent; padding:72px 16px 96px; }
-@media (min-width:768px){ .l-features{ padding:96px 24px 120px; } }
+.l-features { position:relative; background:transparent; padding:72px 16px 56px; }
+@media (min-width:768px){ .l-features{ padding:96px 24px 72px; } }
 .l-features-noise { position:absolute; inset:0; opacity:.15; pointer-events:none; }
 .l-features-inner { position:relative; max-width:80rem; margin:0 auto; z-index:1; }
 .l-features-head { font-weight:400; line-height:1.15; letter-spacing:-.01em; margin-bottom:40px;
