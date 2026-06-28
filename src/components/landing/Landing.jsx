@@ -6,6 +6,8 @@ import Features from './Features';
 import { useStore } from '../../store';
 import '../../landing.css';
 
+const BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4';
+
 function Foot() {
   const { enter } = useStore();
   return (
@@ -32,6 +34,8 @@ function Foot() {
 export default function Landing() {
   return (
     <div className="landing">
+      <video className="l-bg-video" autoPlay loop muted playsInline src={BG_VIDEO} />
+      <div className="l-bg-scrim" />
       <Hero />
       <About />
       <Features />
