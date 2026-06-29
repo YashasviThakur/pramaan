@@ -1,6 +1,26 @@
 import { CENTERS, INDIA_PATH } from '../data/mock';
 import { useStore } from '../store';
 
+// Build a national grid mesh: link each centre to its k nearest neighbours
+// (undirected, de-duped). The dense northern cluster naturally gets more links.
+const MESH_EDGES = (() => {
+  const k = 3;
+  const seen = new Set();
+  const edges = [];
+  CENTERS.forEach((a) => {
+    CENTERS
+      .filter((b) => b.id !== a.id)
+      .map((b) => ({ b, d: Math.hypot(a.x - b.x, a.y - b.y) }))
+      .sort((p, q) => p.d - q.d)
+      .slice(0, k)
+      .forEach(({ b }) => {
+        const key = [a.id, b.id].sort().join('-');
+        if (!seen.has(key)) { seen.add(key); edges.push([a, b]); }
+      });
+  });
+  return edges;
+})();
+
 export default function IndiaMap() {
   const { state } = useStore();
   const breached = state.incident.active ? 'BR-1142' : null;
@@ -26,10 +46,16 @@ export default function IndiaMap() {
         <path d={INDIA_PATH} fill="url(#mapFill)" stroke="rgba(228,224,203,0.34)" strokeWidth="1.1"
           strokeLinejoin="round" />
 
-        {/* faint links from the Delhi hub */}
+        {/* national grid mesh — nearest-neighbour links between centres */}
+        {MESH_EDGES.map(([a, b]) => (
+          <line key={`m${a.id}-${b.id}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y}
+            stroke="rgba(228,224,203,0.075)" strokeWidth="0.5" />
+        ))}
+
+        {/* brighter spokes from the Delhi command hub */}
         {CENTERS.filter((c) => c.id !== 'DL-014').map((c) => (
           <line key={'l' + c.id} x1={hub.x} y1={hub.y} x2={c.x} y2={c.y}
-            stroke="rgba(228,224,203,0.10)" strokeWidth="0.6" />
+            stroke="rgba(228,224,203,0.12)" strokeWidth="0.6" />
         ))}
 
         {CENTERS.map((c) => {
