@@ -12,31 +12,28 @@ export const EXAM = {
   cities: 571,
 };
 
-// Exam centers plotted on a stylised India map (viewBox 0 0 500 560)
+// Exam centers plotted on a geographically accurate India map (viewBox 0 0 500 511).
+// x,y are projected from each city's real lat/long with the same transform as INDIA_PATH
+// (equirectangular, aspect-corrected at 23°N) — so the markers sit at true geographic positions.
 export const CENTERS = [
-  { id: 'DL-014', city: 'New Delhi',  x: 198, y: 168, status: 'ok' },
-  { id: 'JP-021', city: 'Jaipur',     x: 168, y: 196, status: 'ok' },
-  { id: 'LK-033', city: 'Lucknow',    x: 248, y: 200, status: 'ok' },
-  { id: 'PT-009', city: 'Patna',      x: 304, y: 214, status: 'ok' },
-  { id: 'BR-1142',city: 'Hazaribagh', x: 312, y: 233, status: 'ok' }, // the leak source in the demo
-  { id: 'KO-052', city: 'Kolkata',    x: 344, y: 248, status: 'ok' },
-  { id: 'GW-061', city: 'Guwahati',   x: 408, y: 184, status: 'ok' },
-  { id: 'AH-044', city: 'Ahmedabad',  x: 138, y: 258, status: 'ok' },
-  { id: 'BP-027', city: 'Bhopal',     x: 206, y: 268, status: 'ok' },
-  { id: 'MU-003', city: 'Mumbai',     x: 150, y: 312, status: 'ok' },
-  { id: 'HY-018', city: 'Hyderabad',  x: 224, y: 336, status: 'ok' },
-  { id: 'BN-007', city: 'Bengaluru',  x: 210, y: 402, status: 'ok' },
-  { id: 'CH-015', city: 'Chennai',    x: 262, y: 410, status: 'ok' },
-  { id: 'KC-029', city: 'Kochi',      x: 198, y: 462, status: 'ok' },
+  { id: 'DL-014', city: 'New Delhi',  x: 163.7, y: 139.7, status: 'ok' },
+  { id: 'JP-021', city: 'Jaipur',     x: 141.7, y: 168.2, status: 'ok' },
+  { id: 'LK-033', city: 'Lucknow',    x: 221.5, y: 169.2, status: 'ok' },
+  { id: 'PT-009', city: 'Patna',      x: 286.4, y: 190.4, status: 'ok' },
+  { id: 'BR-1142',city: 'Hazaribagh', x: 289.8, y: 217.3, status: 'ok' }, // the leak source in the demo
+  { id: 'KO-052', city: 'Kolkata',    x: 336.2, y: 241.1, status: 'ok' },
+  { id: 'GW-061', city: 'Guwahati',   x: 388.4, y: 181.2, status: 'ok' },
+  { id: 'AH-044', city: 'Ahmedabad',  x: 92.1,  y: 233.4, status: 'ok' },
+  { id: 'BP-027', city: 'Bhopal',     x: 166.8, y: 229.5, status: 'ok' },
+  { id: 'MU-003', city: 'Mumbai',     x: 96.7,  y: 299.8, status: 'ok' },
+  { id: 'HY-018', city: 'Hyderabad',  x: 183.5, y: 328.2, status: 'ok' },
+  { id: 'BN-007', city: 'Bengaluru',  x: 169.6, y: 402.4, status: 'ok' },
+  { id: 'CH-015', city: 'Chennai',    x: 211.0, y: 400.6, status: 'ok' },
+  { id: 'KC-029', city: 'Kochi',      x: 149.2, y: 453.5, status: 'ok' },
 ];
 
-// A simplified, recognisable India outline polygon
-export const INDIA_PATH = `M205,38 L228,52 L246,46 L262,64 L250,86 L274,96 L300,80 L324,92
- L356,86 L388,104 L420,128 L436,156 L420,170 L398,162 L384,180 L406,196 L398,214
- L372,206 L354,224 L360,250 L342,262 L330,250 L314,268 L300,300 L286,326 L292,360
- L276,404 L260,452 L246,508 L232,542 L222,510 L214,460 L206,420 L196,392 L182,372
- L168,392 L150,372 L142,338 L150,312 L138,286 L120,266 L132,244 L120,222 L138,206
- L160,210 L172,188 L160,166 L178,150 L172,120 L190,96 L182,66 L205,38 Z`;
+// Geographically accurate India outline (Natural Earth, mainland), viewBox 0 0 500 511
+export const INDIA_PATH = `M173.4,24 L190,43.7 L188.5,57.4 L194.6,66 L194.1,74.6 L183,72.3 L187.4,90.8 L202.5,101.5 L224,113.2 L214.2,120.8 L208.2,136.6 L223.2,142.9 L237.8,151.2 L258,160.6 L279.2,162.8 L288.1,171.3 L300,172.9 L318.6,176.8 L331.5,176.5 L333.3,169.9 L331.2,159.2 L332.4,152 L341.9,148.5 L343.2,161.7 L343.5,165 L357.6,171.4 L367.3,168.8 L380.3,169.9 L393,169.4 L394,159.1 L387.8,153.7 L400.2,151.6 L414.3,139.1 L432.1,128.4 L445.1,132.6 L456.1,125.5 L463.4,135.9 L458.2,143 L474.8,145.5 L476,151.9 L470.6,155 L471.8,165.3 L460.8,162.3 L440.8,173.9 L441.2,183.5 L432.7,197.6 L431.9,205.8 L425,219.6 L412.9,215.8 L412.3,233.2 L408.8,238.9 L410.5,246 L402.8,250 L394.7,223.4 L390.4,223.4 L387.9,234.2 L379.4,225.5 L384.2,215.9 L391.1,214.9 L398.3,200.7 L389.3,197.8 L375,198.1 L360.3,195.8 L358.9,184.1 L351.5,183.3 L339.3,176 L333.8,187.4 L345,196.3 L335.3,202.6 L331.9,208.7 L341.4,213.2 L338.8,223.3 L344.1,235.9 L346.5,249.8 L344.3,255.9 L333.8,255.7 L314.7,259.2 L315.6,271.8 L307.4,281.8 L285.1,293.1 L267.8,312.8 L256.2,323.4 L240.8,334.4 L240.7,342.2 L233,346.3 L219.1,352.3 L211.9,353.2 L207.2,366 L210.5,387.9 L211.3,401.8 L204.7,417.8 L204.7,446.3 L196.7,447.1 L189.6,460 L194.3,465.5 L180.2,470.3 L175,481.7 L168.8,486.5 L154.2,470.8 L147,447.3 L141.1,430.4 L135.7,422.4 L127.4,406.3 L123.6,385.3 L120.9,374.8 L106.9,351.7 L100.5,319.1 L95.8,297.6 L95.9,277.3 L92.9,261.5 L70.4,271.6 L59.5,269.6 L39.3,249.2 L46.7,243.1 L42.1,236.6 L24,222.3 L34.3,211.1 L68.3,211.1 L65.3,196.7 L56.6,188.2 L54.8,175.2 L44.7,167.7 L61.7,150.1 L79.7,151.4 L95.9,133.8 L105.6,116.7 L120.6,99.8 L120.3,87.9 L133.5,78.1 L121,69.9 L115.7,58.5 L110.2,43.8 L117.8,36.5 L141.2,40.6 L158.5,38.1 L173.4,24 Z`;
 
 // ---- Secure delivery: 2-of-3 key custodians ----
 export const CUSTODIANS = [
