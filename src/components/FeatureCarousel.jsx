@@ -53,6 +53,7 @@ export default function FeatureCarousel() {
   const cardsRefs = useRef([]);
   const frameId = useRef(0);
   const progress = useRef(0);
+  const progressTarget = useRef(0); // driven by scroll; carousel eases toward it
   const mouse = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
   const [metrics, setMetrics] = useState({ cardW: 336, cardH: 211 });
 
@@ -65,11 +66,15 @@ export default function FeatureCarousel() {
       mouse.current.targetY = Math.max(-1, Math.min(1, ry));
     };
     const handleMouseLeave = () => { mouse.current.targetX = 0; mouse.current.targetY = 0; };
+    // scroll advances the carousel (no autoplay) — wheel delta nudges the target
+    const handleWheel = (e) => { progressTarget.current += e.deltaY * 0.0024; };
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('wheel', handleWheel, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
@@ -93,7 +98,8 @@ export default function FeatureCarousel() {
   // 60fps render loop — positions, rotations, perspective culling
   useEffect(() => {
     const renderLoop = () => {
-      progress.current += 0.0016; // slow, premium drift
+      // no autoplay — ease toward the scroll-driven target
+      progress.current += (progressTarget.current - progress.current) * 0.10;
       mouse.current.x += (mouse.current.targetX - mouse.current.x) * 0.08;
       mouse.current.y += (mouse.current.targetY - mouse.current.y) * 0.08;
 
