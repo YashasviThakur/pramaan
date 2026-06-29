@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { StoreProvider, useStore } from './store';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
@@ -10,9 +11,6 @@ import StudentPortal from './components/views/StudentPortal';
 import SecurityShield from './components/views/SecurityShield';
 import AuditLedger from './components/views/AuditLedger';
 
-// same cinematic clip as the landing background, for a unified look
-const BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4';
-
 const VIEWS = {
   command: CommandCenter,
   delivery: SecureDelivery,
@@ -24,21 +22,31 @@ const VIEWS = {
 
 function Shell() {
   const { state } = useStore();
+
+  // subtle mouse parallax on the animated mesh background — adds depth
+  useEffect(() => {
+    if (!state.entered) return undefined;
+    const onMove = (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5).toFixed(3);
+      const y = (e.clientY / window.innerHeight - 0.5).toFixed(3);
+      document.documentElement.style.setProperty('--mx', x);
+      document.documentElement.style.setProperty('--my', y);
+    };
+    window.addEventListener('mousemove', onMove, { passive: true });
+    return () => window.removeEventListener('mousemove', onMove);
+  }, [state.entered]);
+
   if (!state.entered) return <Landing />;
   const View = VIEWS[state.view] || CommandCenter;
   const breaching = state.incident.active && state.incident.stage !== 'contained';
 
   return (
     <>
-      <video
-        className="app-bg-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        src={BG_VIDEO}
-      />
+      <div className={`app-bg${breaching ? ' breaching' : ''}`} aria-hidden="true">
+        <span className="orb orb-a" />
+        <span className="orb orb-b" />
+        <span className="orb orb-c" />
+      </div>
       <div className="app-bg-scrim" />
       <div className="app">
         {breaching && <div className="flag-overlay" />}
