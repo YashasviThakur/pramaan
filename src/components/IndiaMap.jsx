@@ -10,9 +10,9 @@ export default function IndiaMap() {
 
   return (
     <div className="map-wrap">
-      <svg viewBox="0 0 500 511" width="100%" height="100%" style={{ display: 'block' }}>
+      <svg viewBox="0 0 500 542" width="100%" height="100%" style={{ display: 'block' }}>
         <defs>
-          <radialGradient id="mapGlow" cx="46%" cy="40%" r="62%">
+          <radialGradient id="mapGlow" cx="42%" cy="42%" r="62%">
             <stop offset="0%" stopColor="rgba(228,224,203,0.10)" />
             <stop offset="100%" stopColor="rgba(228,224,203,0)" />
           </radialGradient>
@@ -22,7 +22,7 @@ export default function IndiaMap() {
           </linearGradient>
         </defs>
 
-        <rect x="0" y="0" width="500" height="511" fill="url(#mapGlow)" />
+        <rect x="0" y="0" width="500" height="542" fill="url(#mapGlow)" />
         <path d={INDIA_PATH} fill="url(#mapFill)" stroke="rgba(228,224,203,0.34)" strokeWidth="1.1"
           strokeLinejoin="round" />
 
@@ -37,10 +37,10 @@ export default function IndiaMap() {
           const color = isBreach ? '#ef6f86' : '#76d3a1';
           return (
             <g key={c.id} className="map-node">
-              {/* pulsing ring */}
+              {/* pulsing ring — centered on the node via CSS transform-box:fill-box */}
               <circle className="node-ring" cx={c.x} cy={c.y} r="6" fill="none" stroke={color}
                 strokeWidth="1.2" opacity="0.6"
-                style={{ animation: `ringExpand ${isBreach ? 1 : 2.4}s ease-out infinite`, transformOrigin: `${c.x}px ${c.y}px` }} />
+                style={{ animation: `ringExpand ${isBreach ? 1 : 2.4}s ease-out infinite` }} />
               <circle cx={c.x} cy={c.y} r="3.2" fill={color}
                 style={{ filter: `drop-shadow(0 0 5px ${color})` }} />
               {(['DL-014', 'PT-009', 'MU-003', 'BN-007', 'KO-052', 'CH-015'].includes(c.id) || isBreach) && (
