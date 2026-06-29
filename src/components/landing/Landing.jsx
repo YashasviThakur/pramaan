@@ -4,6 +4,7 @@ import Hero from './Hero';
 import About from './About';
 import Features from './Features';
 import { useStore } from '../../store';
+import { EXAM } from '../../data/mock';
 import '../../landing.css';
 
 const BG_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4';
@@ -82,7 +83,7 @@ function Foot() {
           </div>
 
           <div className="l-cert-rows">
-            <div className="l-cert-row"><span className="k">Exam</span><span className="v">NEET-UG 2026</span></div>
+            <div className="l-cert-row"><span className="k">Exam</span><span className="v">{EXAM.name}</span></div>
             <div className="l-cert-row"><span className="k">Centres</span><span className="v">4,750</span></div>
             <div className="l-cert-row"><span className="k">Integrity</span><span className="v ok">100.0%</span></div>
             <div className="l-cert-row"><span className="k">Re-exams ordered</span><span className="v ok">0</span></div>

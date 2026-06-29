@@ -29,7 +29,7 @@ export default function CommandCenter() {
           <span className="chip"><Landmark size={13} /> {EXAM.body}</span>
         </div>
         <h1 className="cc-mast-title">
-          {EXAM.name} — national integrity, <em className="font-serif">secured end to end</em>
+          Every government examination, <em className="font-serif">secured end to end</em>
         </h1>
         <div className="cc-mast-meta">
           <span><b>{EXAM.candidates.toLocaleString('en-IN')}</b> candidates</span>

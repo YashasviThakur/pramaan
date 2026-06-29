@@ -60,7 +60,7 @@ export default function SecurityShield() {
                 <div className="st-ico"><UserX size={16} color={attacking ? 'var(--alert)' : 'var(--text-dim)'} /></div>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: 13 }}>admin-007 · D. Kumar</div>
-                  <div className="faint" style={{ fontSize: 11 }}>key-ops · Hazaribagh · baseline 09:00–18:00</div>
+                  <div className="faint" style={{ fontSize: 11 }}>key-ops · Ranchi · baseline 09:00–18:00</div>
                 </div>
               </div>
               {attacking

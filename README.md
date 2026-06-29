@@ -2,7 +2,7 @@
 
 > **Every paper traceable. Every score verifiable. Every student can trust the exam again.**
 
-Pramaan is a secure, AI-powered platform that makes **every** examination — NEET, JEE, CBSE & state boards, recruitment exams — **leak-proof** and its **evaluation fully transparent** to the student. Built in response to the NEET-UG 2024/2026 paper-leak & re-exam crises and CBSE's evaluation-portal failures.
+Pramaan is a secure, AI-powered platform that makes **every government examination** — entrance tests, board exams, and recruitment exams alike — **leak-proof** and its **evaluation fully transparent** to the student. Built in response to India's recurring paper-leak, re-exam, and evaluation-integrity crises.
 
 Submission for the **ET AI Hackathon 2.0 (The Economic Times × Unstop), 2026** — Problem Statement **#7: AI-Driven Cyber Resilience for Critical National Infrastructure**, framed as *"exam systems are critical national infrastructure."*
 
@@ -59,4 +59,4 @@ npm run preview  # preview the build
 
 ---
 
-*Demo build — synthetic data. Not affiliated with the NTA, CBSE, or CERT-In.*
+*Demo build — synthetic data. Not affiliated with any government examination authority or agency.*

@@ -70,7 +70,7 @@ export default function Sidebar() {
           <ShieldCheck size={13} /> End-to-end secured
         </div>
         <div className="faint" style={{ fontFamily: 'var(--font-mono)', fontSize: 9.5, letterSpacing: '.08em', textAlign: 'center', marginTop: 8 }}>
-          NEET-UG 2026 · NTA · DEMO BUILD
+          {EXAM.name} · DEMO BUILD
         </div>
       </div>
     </aside>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useStore } from '../../store';
-import { SCRIPT } from '../../data/mock';
+import { SCRIPT, EXAM } from '../../data/mock';
 import {
   GraduationCap, ShieldCheck, FileText, Flag, EyeOff, Sparkles, Check, Hash,
 } from 'lucide-react';
@@ -25,7 +25,7 @@ export default function StudentPortal() {
             <div className="brand-mark" style={{ width: 42, height: 42 }}><GraduationCap size={19} color="#fff" /></div>
             <div>
               <div style={{ fontWeight: 700, fontSize: 15 }}>Aarav Kumar</div>
-              <div className="faint" style={{ fontSize: 12 }}>{SCRIPT.candidate} · NEET-UG 2026</div>
+              <div className="faint" style={{ fontSize: 12 }}>{SCRIPT.candidate} · {EXAM.name}</div>
             </div>
           </div>
           <div style={{ textAlign: 'right' }}>

@@ -23,7 +23,7 @@ export const SCRIPTS = {
 
   attack: [
     { text: "🚨 Anomaly on account admin-007 (credential: D. Kumar, centre BR-1142). This is NOT a known-malware signature — it's a behavioural deviation from this account's own baseline." },
-    { text: "In plain English: this admin normally does key-operations during office hours from Hazaribagh. Right now it's logging in at 03:07 IST from a new device in Dubai, and it just issued a direct UPDATE on the marks table after pulling 412 scripts in 90 seconds." },
+    { text: "In plain English: this admin normally does key-operations during office hours from Ranchi. Right now it's logging in at 03:07 IST from a new device in Dubai, and it just issued a direct UPDATE on the marks table after pulling 412 scripts in 90 seconds." },
     { text: "That pattern matches CERT-In advisory CIAD-2026-0119 — 'privileged-account misuse: direct DB writes bypassing the app layer' — at 97% similarity. Predicted intent: silent mark tampering, then exfiltration.", cite: 'CERT-In · CIAD-2026-0119' },
     { text: "Recommended response: execute containment playbook PB-07. Steps 1–3 and 5 are low-blast-radius and can auto-run; step 4 (rolling back production marks-table writes) needs a human approval gate." },
   ],

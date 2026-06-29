@@ -27,6 +27,7 @@ export default function IndiaMap() {
   const contained = state.incident.stage === 'contained';
 
   const hub = CENTERS.find((c) => c.id === 'DL-014');
+  const breachCity = (CENTERS.find((c) => c.id === breached) || {}).city;
 
   return (
     <div className="map-wrap">
@@ -84,7 +85,7 @@ export default function IndiaMap() {
 
       {breached && (
         <div style={{ position: 'absolute', left: 16, bottom: 14 }} className="chip alert rise">
-          <span className="dot alert pulse" /> Centre BR-1142 · Hazaribagh — breach {contained ? 'contained' : 'in progress'}
+          <span className="dot alert pulse" /> Centre BR-1142 · {breachCity} — breach {contained ? 'contained' : 'in progress'}
         </div>
       )}
       {!breached && (

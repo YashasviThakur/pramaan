@@ -17,8 +17,8 @@ export default function SecureDelivery() {
       <div className="banner warn">
         <FileLock2 size={20} color="var(--warn)" />
         <div>
-          <strong>The leak problem:</strong> NEET-UG 2024 papers were printed weeks early and stored in a physical vault in Hazaribagh — and stolen from there.
-          Pramaan keeps the paper <strong>encrypted until 15 minutes before the exam</strong>, with the key split across three authorities.
+          <strong>The leak problem:</strong> Question papers are often printed weeks early and held in physical vaults for days — where they can be photographed, copied or stolen before the exam ever starts.
+          Pramaan keeps every paper <strong>encrypted until 15 minutes before the exam</strong>, with the key split across three authorities.
         </div>
       </div>
 
@@ -79,7 +79,7 @@ export default function SecureDelivery() {
                 <div><strong>Decrypted on schedule.</strong> Logged to the Merkle ledger. Leak window for this paper: ~14 minutes.</div>
               </div>
               <div className="script" style={{ background: '#f6f4ec' }}>
-                <strong>{EXAM.name} — Paper A · Biology</strong><br />
+                <strong>{EXAM.name} — Paper A · Section II</strong><br />
                 <span style={{ fontSize: 12.5 }}>
                   Q14. Explain the mechanism of enzyme action with reference to the lock-and-key and induced-fit models. (5 marks)<br /><br />
                   Q15. Distinguish between mitosis and meiosis with respect to chromosome number and genetic variation. (5 marks)

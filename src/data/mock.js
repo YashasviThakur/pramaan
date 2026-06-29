@@ -3,8 +3,8 @@
 // ============================================================
 
 export const EXAM = {
-  name: 'NEET-UG 2026',
-  body: 'National Testing Agency',
+  name: 'National Exam 2026',
+  body: 'National Examination Authority',
   date: '03 May 2026',
   window: '14:00 – 17:20 IST',
   candidates: 2407589,
@@ -20,7 +20,7 @@ export const CENTERS = [
   { id: 'JP-021',  city: 'Jaipur',      x: 140.9,  y: 209.9,  status: 'ok' },
   { id: 'LK-033',  city: 'Lucknow',     x: 221.4,  y: 210.9,  status: 'ok' },
   { id: 'PT-009',  city: 'Patna',       x: 286.8,  y: 232.8,  status: 'ok' },
-  { id: 'BR-1142', city: 'Hazaribagh',  x: 290.2,  y: 260.3,  status: 'ok' }, // the leak source in the demo
+  { id: 'BR-1142', city: 'Ranchi',      x: 289.4,  y: 271.4,  status: 'ok' }, // the simulated breach centre in the demo
   { id: 'KO-052',  city: 'Kolkata',     x: 337,    y: 284.5,  status: 'ok' },
   { id: 'GW-061',  city: 'Guwahati',    x: 389.8,  y: 223.3,  status: 'ok' },
   { id: 'AH-044',  city: 'Ahmedabad',   x: 90.8,   y: 276.7,  status: 'ok' },
@@ -38,7 +38,7 @@ export const INDIA_PATH = `M167.8,53.2 L170.5,53.8 L172.5,52.5 L174,53.6 L174.4,
 
 // ---- Secure delivery: 2-of-3 key custodians ----
 export const CUSTODIANS = [
-  { id: 'central', role: 'Central Board (NTA)', holder: 'Controller of Exams', frag: '9f2a-c41e-8b07', released: false },
+  { id: 'central', role: 'Central Examination Board', holder: 'Controller of Exams', frag: '9f2a-c41e-8b07', released: false },
   { id: 'principal', role: 'Centre Superintendent', holder: 'Govt. HS, Sector-14', frag: 'd5e9-1a6c-77fb', released: false },
   { id: 'observer', role: 'Independent Observer', holder: 'District Magistrate Cell', frag: '03bc-ee82-4f19', released: false },
 ];
@@ -81,8 +81,8 @@ export const ACCOUNTS = [
     factors: [{ k: 'Login hour', v: 'normal (11:24)', s: 4 }, { k: 'Throughput', v: '38 scripts/hr', s: 8 }, { k: 'Geo', v: 'Ranchi (usual)', s: 3 }] },
   { id: 'eval-1190', name: 'Examiner · R. Verma', baseline: 'Logs in 09:30–17:00 · ~45 scripts/day · Patna', score: 11, flagged: false,
     factors: [{ k: 'Login hour', v: 'normal (09:48)', s: 5 }, { k: 'Throughput', v: '52 scripts/hr', s: 14 }, { k: 'Geo', v: 'Patna (usual)', s: 4 }] },
-  { id: 'admin-007', name: 'Admin · (credential: D. Kumar)', baseline: 'Logs in 09:00–18:00 · key-ops only · Hazaribagh', score: 12, flagged: false,
-    factors: [{ k: 'Login hour', v: 'normal (10:10)', s: 5 }, { k: 'Bulk export', v: 'none', s: 4 }, { k: 'Geo', v: 'Hazaribagh (usual)', s: 5 }] },
+  { id: 'admin-007', name: 'Admin · (credential: D. Kumar)', baseline: 'Logs in 09:00–18:00 · key-ops only · Ranchi', score: 12, flagged: false,
+    factors: [{ k: 'Login hour', v: 'normal (10:10)', s: 5 }, { k: 'Bulk export', v: 'none', s: 4 }, { k: 'Geo', v: 'Ranchi (usual)', s: 5 }] },
 ];
 
 // The anomalous reading that the simulated insider attack produces on admin-007
