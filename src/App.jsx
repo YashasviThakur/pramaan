@@ -53,7 +53,7 @@ function Shell() {
         <Sidebar />
         <div className="main">
           <Topbar />
-          <div className="view">
+          <div className={`view${state.view === 'command' ? ' bleed' : ''}`}>
             <View />
           </div>
         </div>

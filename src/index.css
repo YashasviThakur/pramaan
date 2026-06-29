@@ -260,7 +260,8 @@ button { font-family:inherit; }
 .tb-live .dot { width:6px; height:6px; animation:dotBreath 2.2s ease-in-out infinite; }
 @keyframes dotBreath { 0%,100%{ transform:scale(1) } 50%{ transform:scale(1.4) } }
 
-.view { flex:1; overflow-y:auto; padding:24px; }
+.view { flex:1; overflow-y:auto; padding:24px; position:relative; }
+.view.bleed { padding:0; overflow:hidden; }
 .view-narrow { max-width:1200px; margin:0 auto; }
 
 .grid { display:grid; gap:16px; }
