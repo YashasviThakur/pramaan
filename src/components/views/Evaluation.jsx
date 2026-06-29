@@ -77,7 +77,7 @@ export default function Evaluation() {
                 ))}
               </div>
 
-              <div className="card" style={{ background: 'var(--ink-780)', padding: 13, marginTop: 14, borderColor: 'rgba(91,141,239,.25)' }}>
+              <div className="card" style={{ background: 'var(--ink-780)', padding: 13, marginTop: 14, borderColor: 'rgba(90,134,255,.30)' }}>
                 <div style={{ display: 'flex', gap: 8, fontSize: 11, color: 'var(--chakra)', fontWeight: 600, marginBottom: 6 }}>
                   <Sparkles size={13} /> AI EXPLANATION
                 </div>

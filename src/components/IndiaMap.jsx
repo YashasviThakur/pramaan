@@ -34,34 +34,34 @@ export default function IndiaMap() {
       <svg viewBox="0 0 500 542" width="100%" height="100%" style={{ display: 'block' }}>
         <defs>
           <radialGradient id="mapGlow" cx="42%" cy="42%" r="62%">
-            <stop offset="0%" stopColor="rgba(228,224,203,0.10)" />
-            <stop offset="100%" stopColor="rgba(228,224,203,0)" />
+            <stop offset="0%" stopColor="rgba(90,134,255,0.12)" />
+            <stop offset="100%" stopColor="rgba(90,134,255,0)" />
           </radialGradient>
           <linearGradient id="mapFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(228,224,203,0.07)" />
-            <stop offset="100%" stopColor="rgba(118,211,161,0.05)" />
+            <stop offset="0%" stopColor="rgba(150,172,210,0.08)" />
+            <stop offset="100%" stopColor="rgba(52,194,125,0.05)" />
           </linearGradient>
         </defs>
 
         <rect x="0" y="0" width="500" height="542" fill="url(#mapGlow)" />
-        <path d={INDIA_PATH} fill="url(#mapFill)" stroke="rgba(228,224,203,0.34)" strokeWidth="1.1"
+        <path d={INDIA_PATH} fill="url(#mapFill)" stroke="rgba(150,172,210,0.36)" strokeWidth="1.1"
           strokeLinejoin="round" />
 
         {/* national grid mesh — nearest-neighbour links between centres */}
         {MESH_EDGES.map(([a, b]) => (
           <line key={`m${a.id}-${b.id}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y}
-            stroke="rgba(228,224,203,0.075)" strokeWidth="0.5" />
+            stroke="rgba(150,172,210,0.10)" strokeWidth="0.5" />
         ))}
 
-        {/* brighter spokes from the Delhi command hub */}
+        {/* brighter saffron spokes from the Delhi command hub */}
         {CENTERS.filter((c) => c.id !== 'DL-014').map((c) => (
           <line key={'l' + c.id} x1={hub.x} y1={hub.y} x2={c.x} y2={c.y}
-            stroke="rgba(228,224,203,0.12)" strokeWidth="0.6" />
+            stroke="rgba(255,154,60,0.20)" strokeWidth="0.6" />
         ))}
 
         {CENTERS.map((c) => {
           const isBreach = c.id === breached;
-          const color = isBreach ? '#ef6f86' : '#76d3a1';
+          const color = isBreach ? '#f0596e' : '#34c27d';
           return (
             <g key={c.id} className="map-node">
               {/* pulsing ring — centered on the node via CSS transform-box:fill-box */}
@@ -72,8 +72,8 @@ export default function IndiaMap() {
                 style={{ filter: `drop-shadow(0 0 5px ${color})` }} />
               {(['DL-014', 'PT-009', 'MU-003', 'BN-007', 'KO-052', 'CH-015'].includes(c.id) || isBreach) && (
                 <text x={c.x + 7} y={c.y + 3} fontSize="8.5"
-                  fill={isBreach ? '#f2899c' : 'rgba(233,230,212,0.62)'}
-                  fontFamily="'JetBrains Mono', monospace" letterSpacing="0.02em"
+                  fill={isBreach ? '#f6889a' : 'rgba(238,241,248,0.64)'}
+                  fontFamily="'IBM Plex Mono', monospace" letterSpacing="0.02em"
                   fontWeight={isBreach ? 700 : 500}>
                   {c.city}{isBreach ? ' ⚠' : ''}
                 </text>

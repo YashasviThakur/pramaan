@@ -110,7 +110,7 @@ export default function SecurityShield() {
             ) : (
               <div className="grid" style={{ gap: 8 }}>
                 {ADVISORIES.map((ad) => (
-                  <div key={ad.id} className="rubric-item" style={{ borderColor: ad.match > 0.95 ? 'rgba(255,77,109,.4)' : 'var(--line)' }}>
+                  <div key={ad.id} className="rubric-item" style={{ borderColor: ad.match > 0.95 ? 'rgba(240,89,110,.4)' : 'var(--line)' }}>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 12.3, fontWeight: 500 }}>{ad.title}</div>
                       <div className="faint mono" style={{ fontSize: 10.5, marginTop: 2 }}>{ad.id} · severity {ad.sev}</div>
