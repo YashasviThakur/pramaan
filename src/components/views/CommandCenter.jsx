@@ -22,34 +22,44 @@ export default function CommandCenter() {
 
   return (
     <div className="grid view-narrow" style={{ gap: 18 }}>
-      {/* hero strip */}
-      <div className="card card-pad between" style={{ background: 'linear-gradient(110deg, rgba(24,24,24,.60), rgba(8,8,8,.68) 60%)' }}>
-        <div>
-          <div className="chip" style={{ marginBottom: 10 }}><Landmark size={13} /> {EXAM.body}</div>
-          <h1 style={{ fontSize: 24, marginBottom: 4 }}>{EXAM.name} — national integrity, secured end-to-end</h1>
-          <div className="muted" style={{ fontSize: 13.5 }}>
-            {EXAM.candidates.toLocaleString('en-IN')} candidates · {EXAM.centers.toLocaleString('en-IN')} centres · {EXAM.cities} cities · exam window {EXAM.window}
-          </div>
+      {/* masthead */}
+      <div className="card cc-mast">
+        <div className="cc-mast-top">
+          <span className="cc-index">01 / National Overview</span>
+          <span className="chip"><Landmark size={13} /> {EXAM.body}</span>
         </div>
-        <button className="btn primary" onClick={() => go('delivery')}>
-          Run demo <ArrowRight size={15} />
-        </button>
+        <h1 className="cc-mast-title">
+          {EXAM.name} — national integrity, <em className="font-serif">secured end to end</em>
+        </h1>
+        <div className="cc-mast-meta">
+          <span><b>{EXAM.candidates.toLocaleString('en-IN')}</b> candidates</span>
+          <span className="sep">/</span>
+          <span><b>{EXAM.centers.toLocaleString('en-IN')}</b> centres</span>
+          <span className="sep">/</span>
+          <span><b>{EXAM.cities}</b> cities</span>
+          <span className="sep">/</span>
+          <span>window <b>{EXAM.window}</b></span>
+        </div>
+        <div className="cc-mast-actions">
+          <button className="btn primary" onClick={() => go('delivery')}>
+            Run demo <ArrowRight size={15} />
+          </button>
+        </div>
+        <div className="cc-mast-rule" />
       </div>
 
       {/* stat row */}
       <div className="grid g4">
-        {HEADLINE_STATS.map((s) => {
+        {HEADLINE_STATS.map((s, i) => {
           const Icon = STAT_ICONS[s.key];
           const breached = s.key === 'threats' && state.incident.active;
           return (
             <div className="card stat" key={s.key}>
               <div className="st-top">
                 <div className="st-ico"><Icon size={18} color={breached ? 'var(--alert)' : 'var(--saffron)'} /></div>
-                {(breached || s.tone === 'ok') && (
-                  <span className={`chip ${breached ? 'alert' : 'ok'}`} style={{ fontSize: 10 }}>
-                    {breached ? 'active' : 'nominal'}
-                  </span>
-                )}
+                {(breached || s.tone === 'ok')
+                  ? <span className={`chip ${breached ? 'alert' : 'ok'}`} style={{ fontSize: 10 }}>{breached ? 'active' : 'nominal'}</span>
+                  : <span className="st-idx">{String(i + 1).padStart(2, '0')}</span>}
               </div>
               <div className="st-val" style={{ color: breached ? 'var(--alert)' : undefined }}>
                 {s.key === 'threats' && state.incident.active && state.incident.stage !== 'contained' ? '1' : s.value}

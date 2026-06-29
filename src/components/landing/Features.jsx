@@ -35,10 +35,10 @@ export default function Features() {
           />
         </div>
 
-        {/* single cinematic showcase — all three pillars written over the video */}
+        {/* cinematic showcase band — single overline title */}
         <motion.div
           className="l-showcase"
-          initial={{ opacity: 0, scale: 0.97 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: EASE }}
@@ -46,30 +46,34 @@ export default function Features() {
           <video className="l-showcase-video" autoPlay loop muted playsInline src={SHOWCASE_VIDEO} />
           <div className="l-showcase-grad" />
           <div className="l-showcase-overlay">
+            <div className="l-showcase-kicker">Three pillars · one platform</div>
             <div className="l-showcase-title font-serif">Your exam, secured.</div>
-            <div className="l-pillars">
-              {PILLARS.map((p) => (
-                <button className="l-pillar" key={p.num} onClick={() => enter(p.view)}>
-                  <div className="l-pillar-top">
-                    <span className="l-pillar-title">{p.title}</span>
-                    <span className="l-pillar-num">{p.num}</span>
-                  </div>
-                  <div className="l-pillar-list">
-                    {p.items.map((it) => (
-                      <div className="l-check" key={it}>
-                        <Check size={14} color="var(--primary)" />
-                        <span>{it}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <span className="l-pillar-learn">
-                    Learn more <ArrowRight size={13} style={{ transform: 'rotate(-45deg)' }} />
-                  </span>
-                </button>
-              ))}
-            </div>
           </div>
         </motion.div>
+
+        {/* indexed pillar grid — instrument frames */}
+        <div className="l-pillar-grid">
+          {PILLARS.map((p) => (
+            <button className="l-pillar" key={p.num} onClick={() => enter(p.view)}>
+              <div className="l-pillar-top">
+                <span className="l-pillar-num">{p.num}</span>
+                <Check size={15} color="var(--primary)" style={{ opacity: 0.55 }} />
+              </div>
+              <div className="l-pillar-title">{p.title}</div>
+              <div className="l-pillar-list">
+                {p.items.map((it) => (
+                  <div className="l-check" key={it}>
+                    <Check size={14} color="var(--primary)" />
+                    <span>{it}</span>
+                  </div>
+                ))}
+              </div>
+              <span className="l-pillar-learn">
+                Open <ArrowRight size={13} style={{ transform: 'rotate(-45deg)' }} />
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
     </section>
   );
